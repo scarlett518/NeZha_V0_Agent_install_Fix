@@ -1,7 +1,7 @@
 # NeZha_V0_Windows_Agent_install_Fix
 
 ## 〢 介绍
-一个更改过的哪吒面板Windows端Agent安装脚本，皆在修复V0版本的哪吒面板停止维护后无法顺利安装Windows端Agent的问题。
+一个修改过的V0版本的哪吒面板Windows端Agent安装脚本，皆在修复V0版本的哪吒面板停止维护后无法顺利安装Windows端Agent的问题。
 
 > [!IMPORTANT]
 > 此仓库的Windows Agent安装脚本仅适用于V0版本的哪吒面板。如果你当前是V1的哪吒面板，并希望自己的Windows服务器可以托管于V1版本的哪吒面板，则直接使用V1哪吒面板安装指令安装即可。
@@ -13,7 +13,7 @@
 
 ## 〢 安装脚本更改内容
 ·锁定Agent安装的版本号为v0.20.5 (最后支持V0版本哪吒面板的Agent)。  
-·保留了IP归属地判断逻辑，使得中国大陆地区用户可以使用Gitee镜像源下载Agent。  
+·保留了IP归属地判断逻辑，使得中国大陆地区用户可以使用哪吒面板官方Gitee镜像源下载Agent。  
 ·修复了哪吒面板Agent仍在运行的情况下使用原脚本可能会出现"Access is denied" (访问被拒绝)的问题。此安装脚本会在安装前判断Agent是否仍在运行，如果运行中则终止当前Agent。  
 ·修复了哪吒面板Agent在本地有残留的情况下使用原脚本可能会出现"文件已存在，无法创建"的问题。此安装脚本会在安装前判断Agent是否在本地含有残留文件，如果有残留文件则先删除残留。  
 
@@ -39,18 +39,31 @@ https://raw.githubusercontent.com/DuolaD/NeZha_V0_Windows_Agent_install_Fix/main
 ```
 
 确认拼接无误后，使用拼接后的安装指令复制至使用管理员权限的Windows PowerShell终端即可安装Agent。  
+安装过程中如有提示「执行策略变更」的确认提示，输入[Y]或[A]确认即可。  
 
 ## 〢 其它实用指令
 ·安装V0版本的哪吒面板（版本号为V0哪吒面板的最后一个版本 V0.20.13）（直接复制粘贴至SSH终端即可运行）：
 
-如果你的服务器在中国大陆以外的地区，则复制以下安装指令并粘贴至SSH终端运行：
+> [!IMPORTANT]
+> 如果你已经安装了V1版本的哪吒面板，请先使用V1哪吒面板的安装脚本中的卸载功能卸载面板端，以免产生不必要的Bug。
+
+如果你的服务器在中国大陆以外的地区，则复制以下安装指令并粘贴至SSH终端运行以安装V0版本的哪吒面板：
 
 ```
 curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/main/install.sh -o nezha.sh && chmod +x nezha.sh && sudo ./nezha.sh
 ```
 
-如果你的服务器在中国大陆地区，则复制以下安装指令并粘贴至SSH终端运行：
+如果你的服务器在中国大陆地区，则复制以下安装指令并粘贴至SSH终端运行以安装V0版本的哪吒面板：
 
 ```
 curl -L https://gitee.com/naibahq/scripts/raw/v0/install.sh -o nezha.sh && chmod +x nezha.sh && sudo CN=true ./nezha.sh
 ```
+
+如果你要在这之后打开脚本菜单，则复制以下指令并粘贴至SSH终端运行：
+
+```
+./nezha.sh
+```
+
+> [!IMPORTANT]
+> 安装脚本后请不要输入13更新脚本，否则脚本将会更新至最新的V1哪吒面板的安装脚本。如果你不小心更新至V1哪吒面板的安装脚本，则可以使用上述安装指令重新安装V0版本哪吒面板的安装脚本。
