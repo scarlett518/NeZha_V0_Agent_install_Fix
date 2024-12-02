@@ -1,0 +1,2 @@
+# NeZha_V0_Windows_Agent_install_Fix
+一个更改过的哪吒面板Windows端Agent安装脚本，皆在修复V0版本停止维护后无法顺利安装Windows端Agent的问题。
