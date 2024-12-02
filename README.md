@@ -1,100 +1,103 @@
 # NeZha_V0_Agent_install_Fix
 
-## 〢 介绍
-一个修改过的V0版本的哪吒面板的Agent安装脚本，皆在修复V0版本的哪吒面板停止维护后无法顺利安装Windows/MacOS端Agent的问题。
+**EN**|[简体中文](Readme.Chinese_Simplified.md)|[繁體中文](Readme.Chinese_Traditional.md)  
 
-本仓库更多的用途还是在于自用。如果你想做出贡献/提议/Bug反馈，欢迎提交issues/Forks/PR!  
+## 〢 Introduction
+
+This is a modified V0 version of the Nezha panel Agent installation script, aimed at fixing the issue where Windows/MacOS Agent installation fails after the discontinuation of maintenance for the V0 Nezha panel.
+
+This repository is primarily for personal use. If you'd like to contribute, make suggestions, or report bugs, feel free to submit issues, forks, or pull requests!
 
 > [!IMPORTANT]
-> 此仓库的Agent安装脚本仅适用于V0版本的哪吒面板。如果你当前是V1的哪吒面板，并希望自己的Windows/MacOS服务器可以托管于V1版本的哪吒面板，则直接使用V1哪吒面板后台提供的安装指令安装即可。
+> The Agent installation script in this repository is only suitable for the V0 version of the Nezha panel. If you are using the V1 version and want your Windows/MacOS servers to work with it, use the installation instructions provided directly in the V1 Nezha panel backend.
 
-## 〢 免责声明/叠甲
-此仓库的Agent安装脚本并没有添加任何后门，也没有进行任何加密。安装脚本所有代码均可查看。  
-此仓库的Agent安装脚本以及Readme.md文件中所示的安装指令中，所下载的所有安装包的获取来源均为哪吒面板官方源仓库/官方镜像源仓库。  
-如果你不放心使用此安装脚本，可以自行查看安装脚本代码，或者将代码交由AI进行检查。如果你仍然心存顾虑，则不要使用此安装脚本。  
+## 〢 Disclaimer
 
-## 〢 安装脚本更改内容
-·锁定Agent安装的版本号为v0.20.5 (最后支持V0版本哪吒面板的Agent)。  
-·保留了IP归属地判断逻辑，使得中国大陆地区用户可以使用哪吒面板官方Gitee镜像源下载Agent。  
-·修复了哪吒面板Agent仍在运行的情况下使用原脚本可能会出现"Access is denied" (访问被拒绝)的问题。此安装脚本会在安装前判断Agent是否仍在运行，如果运行中则终止当前Agent。  
-·修复了哪吒面板Agent在本地有残留的情况下使用原脚本可能会出现"文件已存在，无法创建"的问题。此安装脚本会在安装前判断Agent是否在本地含有残留文件，如果有残留文件则先删除残留。  
-·加入了更多的提示信息，以方便在发生问题时更容易定位问题所在点。  
+This repository’s Agent installation script does not contain any backdoors or encryption. All code is open for inspection.  
+The installation packages downloaded through the installation commands in this repository are sourced exclusively from the official Nezha panel repository or its official mirrors.  
+If you have concerns about using this script, you can review the code yourself or have it verified by AI. If you still have doubts, do not use the script.
+
+## 〢 Changes in the Installation Script
+
+- The Agent installation version is locked to v0.20.5 (the last version supporting the V0 Nezha panel).  
+- Retains IP geolocation logic to allow users in mainland China to download the Agent from the official Gitee mirror.  
+- Fixes the issue where running the original script while the Agent is already running could result in "Access is denied." This script checks if the Agent is running before installation and stops it if necessary.  
+- Resolves issues where leftover local Agent files could cause "File exists and cannot be created" errors. The script checks for residual files and removes them before installation.  
+- Includes more detailed prompts to facilitate troubleshooting.  
 
 > [!NOTE]
-> MacOS的Agent安装脚本的更新日志同上。但由于本人手中并没有运行MacOS的设备，故本人暂无办法测试/验证并保证可以完美运行。实际运行情况需要自行测试。如果你想做出贡献/提议/Bug反馈，欢迎提交issues/Forks/PR!    
+> Updates for the MacOS Agent installation script follow the same changelog. However, as I do not have access to a MacOS device, I cannot test or guarantee perfect execution. Please test and verify it yourself. Contributions, suggestions, and bug reports are welcome via issues, forks, or PRs!  
 
-## 〢 Windows端如何使用？
+## 〢 Instructions for Windows
 
-从哪吒面板后台复制你的Windows Agent安装指令。假设以下为你复制的安装指令：
+Copy the Windows Agent installation command from the Nezha panel backend. Assuming the following is the copied command:
 ```
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Ssl3 -bor [Net.SecurityProtocolType]::Tls -bor [Net.SecurityProtocolType]::Tls11 -bor [Net.SecurityProtocolType]::Tls12;set-ExecutionPolicy RemoteSigned;Invoke-WebRequest https://raw.githubusercontent.com/nezhahq/scripts/main/extras/install.ps1 -OutFile C:\install.ps1;powershell.exe C:\install.ps1 1.1.1.1.nip.io:5555 [Key]
 ```
 
-那么只需要将你原安装指令指向的安装脚本获取网址：
+Replace the original script URL:
 ```
 https://raw.githubusercontent.com/nezhahq/scripts/main/extras/install.ps1
 ```
 
-改为本仓库修改过后的安装脚本获取网址：
+With the modified script URL from this repository:
 ```
 https://raw.githubusercontent.com/DuolaD/NeZha_V0_Agent_install_Fix/main/install.ps1
 ```
 
-然后重新拼接安装指令：
+Then, reconstruct the command:
 ```
 [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Ssl3 -bor [Net.SecurityProtocolType]::Tls -bor [Net.SecurityProtocolType]::Tls11 -bor [Net.SecurityProtocolType]::Tls12;set-ExecutionPolicy RemoteSigned;Invoke-WebRequest https://raw.githubusercontent.com/DuolaD/NeZha_V0_Agent_install_Fix/main/install.ps1 -OutFile C:\install.ps1;powershell.exe C:\install.ps1 1.1.1.1.nip.io:5555 [Key]
 ```
 
-确认拼接无误后，使用拼接后的安装指令复制至使用管理员权限的Windows PowerShell终端即可安装Agent。  
-安装过程中如有提示「执行策略变更」的确认提示，输入[Y]或[A]确认即可。  
+Copy the reconstructed command into a Windows PowerShell terminal with administrator privileges to install the Agent.  
+If prompted for execution policy change confirmation, input `[Y]` or `[A]` to proceed.  
 
-## 〢 MacOS端如何使用？
+## 〢 Instructions for MacOS
 
-从哪吒面板后台复制你的MacOS Agent安装指令。假设以下为你复制的安装指令：
+Copy the MacOS Agent installation command from the Nezha panel backend. Assuming the following is the copied command:
 ```
 curl -L https://raw.githubusercontent.com/nezhahq/scripts/main/extras/install.command -o nezha.command && chmod +x nezha.command && sudo ./nezha.command install_agent 1.1.1.1.nip.io 5555 [Key]
 ```
 
-那么只需要将你原安装指令指向的安装脚本获取网址：
+Replace the original script URL:
 ```
 https://raw.githubusercontent.com/nezhahq/scripts/main/extras/install.command
 ```
 
-改为本仓库修改过后的安装脚本获取网址：
+With the modified script URL from this repository:
 ```
 https://raw.githubusercontent.com/DuolaD/NeZha_V0_Agent_install_Fix/main/install.command
 ```
 
-然后重新拼接安装指令：
+Then, reconstruct the command:
 ```
 curl -L https://raw.githubusercontent.com/DuolaD/NeZha_V0_Agent_install_Fix/main/install.command -o nezha.command && chmod +x nezha.command && sudo ./nezha.command install_agent 1.1.1.1.nip.io 5555 [Key]
 ```
 
-确认拼接无误后，使用拼接后的安装指令复制至终端运行即可安装Agent。  
+Copy the reconstructed command into the terminal and run it to install the Agent.  
 
-## 〢 其它实用指令
-·安装V0版本的哪吒面板（版本号为V0哪吒面板的最后一个版本 V0.20.13）（直接复制粘贴至SSH终端即可运行）：
+## 〢 Additional Useful Commands
+
+- Install the V0 version of the Nezha panel (version v0.20.13). Copy and paste the following commands directly into the SSH terminal:
 
 > [!IMPORTANT]
-> 如果你已经安装了V1版本的哪吒面板，请先使用V1哪吒面板的安装脚本中的卸载功能卸载面板端，以免产生不必要的Bug。
+> If you have already installed the V1 Nezha panel, first use the uninstall function in its installation script to remove it, to avoid bugs.
 
-如果你的服务器在中国大陆以外的地区，则复制以下安装指令并粘贴至SSH终端运行以安装V0版本的哪吒面板：
-
+For servers located outside mainland China:
 ```
 curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/main/install.sh -o nezha.sh && chmod +x nezha.sh && sudo ./nezha.sh
 ```
 
-如果你的服务器在中国大陆地区，则复制以下安装指令并粘贴至SSH终端运行以安装V0版本的哪吒面板：
-
+For servers located in mainland China:
 ```
 curl -L https://gitee.com/naibahq/scripts/raw/v0/install.sh -o nezha.sh && chmod +x nezha.sh && sudo CN=true ./nezha.sh
 ```
 
-如果你要在这之后打开脚本菜单，则复制以下指令并粘贴至SSH终端运行：
-
+To open the script menu afterward:
 ```
 ./nezha.sh
 ```
 
 > [!IMPORTANT]
-> 安装脚本后请不要输入13更新脚本，否则脚本将会更新至最新的V1哪吒面板的安装脚本。如果你不小心更新至V1哪吒面板的安装脚本，则可以使用上述安装指令重新安装V0版本哪吒面板的安装脚本。
+> After running the script, do not select option 13 to update the script, as it will update to the latest V1 installation script. If this happens, you can reinstall the V0 script using the commands above.  
