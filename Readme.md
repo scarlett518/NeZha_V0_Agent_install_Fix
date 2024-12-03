@@ -86,7 +86,7 @@ Copy the reconstructed command into the terminal and run it to install the Agent
 
 For servers located outside mainland China:
 ```
-curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/main/install.sh -o nezha.sh && chmod +x nezha.sh && sudo ./nezha.sh
+curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/v0/install.sh -o nezha.sh && chmod +x nezha.sh && sudo ./nezha.sh
 ```
 
 For servers located in mainland China:

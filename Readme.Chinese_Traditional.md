@@ -83,7 +83,7 @@ curl -L https://raw.githubusercontent.com/DuolaD/NeZha_V0_Agent_install_Fix/main
 如果你的服務器在中國大陸以外的地區，則複製以下安裝指令並粘貼至SSH終端運行以安裝V0版本的哪吒面板：
 
 ```
-curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/main/install.sh -o nezha.sh && chmod +x nezha.sh && sudo ./nezha.sh
+curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/v0/install.sh -o nezha.sh && chmod +x nezha.sh && sudo ./nezha.sh
 ```
 
 如果你的服務器在中國大陸地區，則複製以下安裝指令並粘貼至SSH終端運行以安裝V0版本的哪吒面板：
