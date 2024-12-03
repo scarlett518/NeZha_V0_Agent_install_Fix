@@ -77,27 +77,54 @@ curl -L https://raw.githubusercontent.com/DuolaD/NeZha_V0_Agent_install_Fix/main
 
 Copy the reconstructed command into the terminal and run it to install the Agent.  
 
-## 〢 Additional Useful Commands
+## 〢 Other Useful Commands  
 
-- Install the V0 version of the Nezha panel (version v0.20.13). Copy and paste the following commands directly into the SSH terminal:
+- Install the V0 version of the Nezha panel (version v0.20.13, the last version of the V0 Nezha panel). Copy and paste the following commands directly into your SSH terminal to run:  
 
-> [!IMPORTANT]
-> If you have already installed the V1 Nezha panel, first use the uninstall function in its installation script to remove it, to avoid bugs.
+> [!IMPORTANT]  
+> If you have already installed the V1 version of the Nezha panel, please use the uninstall function in the V1 installation script to remove the panel first to avoid unnecessary bugs.  
 
-For servers located outside mainland China:
+If your server is located outside mainland China, copy and paste the following command into the SSH terminal to install the V0 version of the Nezha panel:  
 ```
 curl -L https://raw.githubusercontent.com/nezhahq/scripts/refs/heads/v0/install.sh -o nezha.sh && chmod +x nezha.sh && sudo ./nezha.sh
 ```
 
-For servers located in mainland China:
+If your server is located in mainland China, copy and paste the following command into the SSH terminal to install the V0 version of the Nezha panel:  
 ```
 curl -L https://gitee.com/naibahq/scripts/raw/v0/install.sh -o nezha.sh && chmod +x nezha.sh && sudo CN=true ./nezha.sh
 ```
 
-To open the script menu afterward:
+To open the script menu after installation, copy and paste the following command into the SSH terminal:  
 ```
 ./nezha.sh
 ```
 
-> [!IMPORTANT]
-> After running the script, do not select option 13 to update the script, as it will update to the latest V1 installation script. If this happens, you can reinstall the V0 script using the commands above.  
+> [!IMPORTANT]  
+> After running the installation script, do not select option 13 to update the script, as this will update it to the latest V1 Nezha panel installation script. If you accidentally update to the V1 script, you can reinstall the V0 script using the commands provided above.  
+
+- Install the Agent for the V0 version of the Nezha panel on a Linux server:  
+
+Copy your Linux Agent installation command from the Nezha panel backend. Assuming the copied command is:  
+```
+curl -L https://raw.githubusercontent.com/nezhahq/scripts/main/install.sh -o nezha.sh && chmod +x nezha.sh && ./nezha.sh install_agent 1.1.1.1.nip.io 5555 [key]
+```
+
+Replace the original script URL:  
+```
+https://raw.githubusercontent.com/nezhahq/scripts/main/install.sh
+```
+
+With the script URL from the official Nezha repository’s V0 branch:  
+```
+https://raw.githubusercontent.com/nezhahq/scripts/v0/install.sh
+```
+
+Then reconstruct the command:  
+```
+curl -L https://raw.githubusercontent.com/nezhahq/scripts/v0/install.sh -o nezha.sh && chmod +x nezha.sh && ./nezha.sh install_agent 1.1.1.1.nip.io 5555 [key]
+```
+
+After confirming that the command has been correctly modified, copy and paste it into the SSH terminal to execute.  
+
+> [!IMPORTANT]  
+> After running the installation script, do not select option 13 to update the script, as this will update it to the latest V1 Nezha panel installation script. If you accidentally update to the V1 script, you can reinstall the V0 script using the commands provided above.  

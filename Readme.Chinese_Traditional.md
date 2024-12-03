@@ -100,3 +100,29 @@ curl -L https://gitee.com/naibahq/scripts/raw/v0/install.sh -o nezha.sh && chmod
 
 > [!IMPORTANT]
 > 安裝腳本後請不要輸入13更新腳本，否則腳本將會更新至最新的V1哪吒面板的安裝腳本。如果你不小心更新至V1哪吒面板的安裝腳本，則可以使用上述安裝指令重新安裝V0版本哪吒面板的安裝腳本。
+
+- 在Linux服務器安裝適用於V0版本哪吒面板的Agent：
+
+從哪吒面板後臺複製你的Linux Agent安裝指令。假設以下爲你複製的安裝指令：
+```
+curl -L https://raw.githubusercontent.com/nezhahq/scripts/main/install.sh -o nezha.sh && chmod +x nezha.sh && ./nezha.sh install_agent 1.1.1.1.nip.io 5555 [key]
+```
+
+那麼只需要將你原安裝指令指向的安裝腳本獲取網址：
+```
+https://raw.githubusercontent.com/nezhahq/scripts/main/install.sh
+```
+
+改爲哪吒官方倉庫v0分支的安裝腳本獲取網址：
+```
+https://raw.githubusercontent.com/nezhahq/scripts/v0/install.sh
+```
+
+然後重新拼接安裝指令：
+curl -L https://raw.githubusercontent.com/nezhahq/scripts/v0/install.sh -o nezha.sh && chmod +x nezha.sh && ./nezha.sh install_agent 1.1.1.1.nip.io 5555 [key]
+```
+
+確認拼接無誤後，使用拼接後的安裝指令複製至SSH終端運行即可。
+
+> [!IMPORTANT]
+> 安裝腳本後請不要輸入13更新腳本，否則腳本將會更新至最新的V1哪吒面板的安裝腳本。如果你不小心更新至V1哪吒面板的安裝腳本，則可以使用上述安裝指令重新安裝V0版本哪吒面板的安裝腳本。
