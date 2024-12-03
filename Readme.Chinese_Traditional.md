@@ -119,6 +119,7 @@ https://raw.githubusercontent.com/nezhahq/scripts/v0/install.sh
 ```
 
 然後重新拼接安裝指令：
+```
 curl -L https://raw.githubusercontent.com/nezhahq/scripts/v0/install.sh -o nezha.sh && chmod +x nezha.sh && ./nezha.sh install_agent 1.1.1.1.nip.io 5555 [key]
 ```
 
