@@ -26,7 +26,7 @@ If you have concerns about using this script, you can review the code yourself o
 - Includes more detailed prompts to facilitate troubleshooting.  
 
 > [!NOTE]
-> Updates for the MacOS Agent installation script follow the same changelog. However, as I do not have access to a MacOS device, I cannot test or guarantee perfect execution. Please test and verify it yourself. Contributions, suggestions, and bug reports are welcome via issues, forks, or PRs!  
+> Contributions, suggestions, and bug reports are welcome via issues, forks, or PRs!  
 
 ## 〢 Instructions for Windows
 
