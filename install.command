@@ -24,49 +24,32 @@ pre_check() {
         os_arch="amd64"
     elif [[ $(uname -m | grep 'arm64\|arm64e') != "" ]]; then
         os_arch="arm64"
+    else
+        echo -e "${red}ERROR:${plain} Unsupported architecture!" && exit 1
     fi
 
     # Detect China IP
     if [[ -z "${CN}" ]]; then
         if [[ $(curl -m 10 -s http://ip-api.com/json | grep 'country' | grep -q 'China') != "" ]]; then
-            echo "Detected that the current IP may be in China"
-            read -e -r -p "Use a Chinese mirror for installation? [Y/n] (3 for custom mirror): " input
-            case $input in
-                [yY][eE][sS] | [yY]) CN=true ;;
-                [nN][oO] | [nN]) ;;
-                3)
-                    read -e -r -p "Enter a custom mirror (leave blank for none): " input
-                    CUSTOM_MIRROR=$input
-                    ;;
-            esac
+            CN=true
         fi
     fi
 
-    if [[ -n "${CUSTOM_MIRROR}" ]]; then
-        GITHUB_RAW_URL="gitee.com/naibahq/nezha/raw/master"
-        GITHUB_URL=$CUSTOM_MIRROR
+    if [[ -n "${CN}" ]]; then
+        GITHUB_RAW_URL="gitee.com/naibahq/nezha/raw/v0"
+        GITHUB_URL="gitee.com"
     else
-        if [[ -z "${CN}" ]]; then
-            GITHUB_RAW_URL="raw.githubusercontent.com/naiba/nezha/master"
-            GITHUB_URL="github.com"
-        else
-            GITHUB_RAW_URL="gitee.com/naibahq/nezha/raw/master"
-            GITHUB_URL="gitee.com"
-        fi
+        GITHUB_RAW_URL="raw.githubusercontent.com/naiba/nezha/v0"
+        GITHUB_URL="github.com"
     fi
 }
 
 install_agent() {
     echo -e "> Installing Nezha Agent"
 
-    echo -e "Retrieving latest agent version..."
-    local version=$(curl -m 10 -sL "https://api.github.com/repos/nezhahq/agent/releases/latest" | grep "tag_name" | head -n 1 | awk -F ":" '{print $2}' | sed 's/\"//g;s/,//g;s/ //g')
-    if [[ -z "$version" ]]; then
-        echo -e "${red}Failed to retrieve agent version. Check network connectivity.${plain}"
-        return 1
-    else
-        echo -e "Latest version: ${version}"
-    fi
+    # Fixed version
+    local version="v0.20.5"
+    echo -e "Installing fixed agent version: ${version}"
 
     # Create agent directory
     mkdir -p "$NZ_AGENT_PATH"
